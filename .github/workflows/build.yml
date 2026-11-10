@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      
       - name: Extraer ZIP
-        run: unzip eclipse-solar-fabric-1.21.1.zip
-
+        run: |
+          unzip eclipse-solar-fabric-1.21.1.zip
+          sed -i 's/import net.minecraft.client.render.CameraSubmersionType;/import net.minecraft.block.enums.CameraSubmersionType;/' eclipse-solar/src/main/java/com/solareclipse/EclipseSkyRenderer.java
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
